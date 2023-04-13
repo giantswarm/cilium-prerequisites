@@ -6,4 +6,5 @@ checks:
   - "unset-memory-requirements"
   - "no-anti-affinity"
   - "latest-tag"
+  - "host-network"
 
