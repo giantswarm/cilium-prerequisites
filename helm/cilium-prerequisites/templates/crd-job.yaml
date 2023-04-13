@@ -1,0 +1,42 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Values.name | quote }}
+  namespace: kube-system
+  labels:
+    app: {{ .Values.name | quote }}
+    {{- include "labels.common" . | nindent 4 }}
+spec:
+  backoffLimit: 50
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name | quote }}
+    spec:
+      hostNetwork: true
+      restartPolicy: OnFailure
+      serviceAccountName: {{ .Values.name | quote }}
+      priorityClassName: system-cluster-critical
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 6 }}
+      {{- end }}
+      volumes:
+      - name: crds
+        configMap:
+          name: {{ .Values.name | quote }}
+      containers:
+      - name: cilium-apply-crds
+        image: "quay.io/giantswarm/docker-kubectl:latest"
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - name: crds
+          mountPath: /crds
+        command:
+        - sh
+        args:
+        - -c
+        - |
+          set -o errexit ; set -o xtrace ; set -o nounset
+
+          kubectl apply --server-side=true --field-manager='kubectl-client-side-apply' --force-conflicts -f /crds/ 2>&1

@@ -11,7 +11,7 @@ script_dir="$( cd "$( dirname "$0" )" && pwd )"
 
 function main() {
     git clone --depth 1 --branch "$version" "$upstream" "$tmp"
-    cp -rf "$tmp/pkg/k8s/apis/cilium.io/client/crds/v2/ciliumclusterwidenetworkpolicies.yaml" "$tmp/pkg/k8s/apis/cilium.io/client/crds/v2/ciliumnetworkpolicies.yaml" "$script_dir/../helm/cilium-prerequisites/templates/"
+    cp -rf "$tmp/pkg/k8s/apis/cilium.io/client/crds/v2/ciliumclusterwidenetworkpolicies.yaml" "$tmp/pkg/k8s/apis/cilium.io/client/crds/v2/ciliumnetworkpolicies.yaml" "$script_dir/../helm/cilium-prerequisites/files/crds/"
 }
 
 trap "rm -rf $tmp" EXIT
