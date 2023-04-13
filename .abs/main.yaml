@@ -1,4 +1,5 @@
 replace-chart-version-with-git: true
 generate-metadata: true
-chart-dir: ./helm/{APP-NAME}
+chart-dir: ./helm/cilium-prerequisites
 destination: ./build
+disable-giantswarm-helm-validator: true
