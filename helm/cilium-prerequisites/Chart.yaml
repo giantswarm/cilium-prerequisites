@@ -1,0 +1,12 @@
+apiVersion: v2
+appVersion: 1.13.0
+name: "cilium-prerequisites"
+description: Cilium Network Policy CRDs.
+icon: https://s.giantswarm.io/app-icons/k8s-initiator/1/dark.svg
+home: https://github.com/giantswarm/cilium-prerequisites
+sources:
+- https://github.com/cilium/cilium
+version: [[ .Version ]]
+annotations:
+  application.giantswarm.io/team: "phoenix"
+  config.giantswarm.io/version: 1.x.x
