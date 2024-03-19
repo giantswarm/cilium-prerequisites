@@ -8,5 +8,5 @@ sources:
 - https://github.com/cilium/cilium
 version: [[ .Version ]]
 annotations:
-  application.giantswarm.io/team: "phoenix"
+  application.giantswarm.io/team: "cabbage"
   config.giantswarm.io/version: 1.x.x
