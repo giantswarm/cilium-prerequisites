@@ -1,12 +1,17 @@
 apiVersion: v2
-appVersion: 1.13.0
 name: "cilium-prerequisites"
 description: Cilium Network Policy CRDs.
-icon: https://s.giantswarm.io/app-icons/k8s-initiator/1/dark.svg
+version: 0.0.1-dev
+appVersion: 0.0.1-dev
 home: https://github.com/giantswarm/cilium-prerequisites
+icon: https://s.giantswarm.io/app-icons/k8s-initiator/1/dark.svg
 sources:
 - https://github.com/cilium/cilium
-version: [[ .Version ]]
 annotations:
-  application.giantswarm.io/team: "phoenix"
+  application.giantswarm.io/team: "cabbage"
   config.giantswarm.io/version: 1.x.x
+  ui.giantswarm.io/logo: https://s.giantswarm.io/app-icons/k8s-initiator/1/dark.svg
+restrictions:
+  clusterSingleton: true
+  fixedNamespace: kube-system
+  gpuInstances: false
